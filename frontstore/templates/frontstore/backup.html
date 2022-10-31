@@ -1,0 +1,36 @@
+<div class="bd-example center vertical-center">
+    <table class="table table-hover table-dark" style="width: 50%; height: 100%;">
+        <thead>
+            <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Shipped Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for orders in saleorders %}
+            <tr>
+                <th scope="row">{{orders.order_number}}</th>
+                <td>{{orders.item}}</td>
+                <td>{{orders.quantity}}</td>
+                <td>{{orders.shipped_date}}</td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="container bd-example center vertical-center">
+    <div class="row table table-hover table-dark divtable">
+        <div class="col">Order Number</div>
+        <div class="col">Item</div>
+        <div class="col">Quantity</div>
+        <div class="col">Shipped Date</div>
+    </div>
+
+</div>

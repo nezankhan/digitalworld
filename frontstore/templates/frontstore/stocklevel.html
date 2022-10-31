@@ -1,0 +1,66 @@
+{% extends "frontstore/staff.html" %}
+
+
+{% block order %}
+
+
+<div>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Current Stock Level</th>
+                <th scope="col">Item Id</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Supplier ID</th>
+                <th scope="col">Supplier Address</th>
+                <th scope="col">Company Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for items in inventorylist %}
+            <tr>
+                <th scope="row">{{items.stock_level}}</th>
+                <td>{{items.item_id}}</td>
+                <td>{{items.product_name}}</td>
+                <td>{{items.price}}</td>
+                <td>{{items.supplier_id}}</td>
+                <td>{{items.supplier_address}}</td>
+                <td>{{items.company_name}}</td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">
+                {% if inventorylist.has_other_pages %}
+                {% if inventorylist.has_previous %}
+                    <a class = "btn btn-outline-info mb-4" href = "?page=1">First</a>
+                    <a class = "btn btn-outline-info mb-4" href = "?page={{ inventorylist.previous_page_number }}">Previous</a>
+                {% endif %}
+        
+                {% for num in inventorylist.paginator.page_range%}
+        
+                    {% if inventorylist.number == num%}
+                    <a class = "btn btn-info mb-4" href = "?page={{num}}">{{num}}</a>
+                    {% elif num > inventorylist.number|add:'-3' and num < inventorylist.number|add:'+3' %}
+                    <a class = "btn btn-outline-info mb-4" href = "?page={{num}}">{{num}}</a>
+                    {%endif%}
+        
+                {% endfor %}
+        
+                {% if inventorylist.has_next %}
+                <a class = "btn btn-outline-info mb-4" href = "?page={{inventorylist.next_page_number}}">Next</a>
+                <a class = "btn btn-outline-info mb-4" href = "?page={{inventorylist.paginator.num_pages}}">Last</a>
+                {% endif %}
+            {% endif %}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+{% endblock order %}

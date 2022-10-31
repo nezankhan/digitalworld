@@ -1,0 +1,60 @@
+{% extends "frontstore/staff.html" %}
+{% load crispy_forms_tags %}
+
+{% block order %}
+
+
+<div>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Customer ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Order Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for saleorders in customerorders %}
+                <tr>
+                    <th scope="row">{{saleorders.customer_id}}</th>
+                    <td>{{saleorders.first_name}}</td>
+                    <td>{{saleorders.last_name}}</td>
+                    <td>{{saleorders.order_number}}</td>
+                </tr>
+                {% endfor %}
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                {% if customerorders.has_other_pages %}
+                {% if customerorders.has_previous %}
+                    <a class = "btn btn-outline-info mb-4" href = "?page=1">First</a>
+                    <a class = "btn btn-outline-info mb-4" href = "?page={{ customerorders.previous_page_number }}">Previous</a>
+                {% endif %}
+        
+                {% for num in customerorders.paginator.page_range%}
+        
+                    {% if customerorders.number == num%}
+                    <a class = "btn btn-info mb-4" href = "?page={{num}}">{{num}}</a>
+                    {% elif num > customerorders.number|add:'-3' and num < customerorders.number|add:'+3' %}
+                    <a class = "btn btn-outline-info mb-4" href = "?page={{num}}">{{num}}</a>
+                    {%endif%}
+        
+                {% endfor %}
+        
+                {% if customerorders.has_next %}
+                <a class = "btn btn-outline-info mb-4" href = "?page={{customerorders.next_page_number}}">Next</a>
+                <a class = "btn btn-outline-info mb-4" href = "?page={{customerorders.paginator.num_pages}}">Last</a>
+                {% endif %}
+            {% endif %}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+{% endblock order %}

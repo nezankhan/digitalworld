@@ -1,0 +1,65 @@
+{% extends "frontstore/base.html" %}
+
+
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Digital World</h1>
+            <p class="lead text-muted">Please Contact one of our sales agent, and they will happy to assist you in meeting your digital needs</p>
+        </div>
+    </div>
+</section>
+<div >
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Title</th>
+                <th scope="col">Contact#</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in employees %}
+            <tr>
+                <th scope="row">{{emp.first_name}} {{emp.first_name}}</th>
+                <td>{{emp.title}}</td>
+                <td>{{emp.phone}}</td>
+                
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                {% if is_paginated%}
+                {% if page_obj.has_previous %}
+                    <a class = "btn btn-outline-info mb-4" href = "?page=1">First</a>
+                    <a class = "btn btn-outline-info mb-4" href = "?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+        
+                {% for num in page_obj.paginator.page_range%}
+        
+                    {% if page_obj.number == num%}
+                    <a class = "btn btn-info mb-4" href = "?page={{num}}">{{num}}</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'+3' %}
+                    <a class = "btn btn-outline-info mb-4" href = "?page={{num}}">{{num}}</a>
+                    {%endif%}
+        
+                {% endfor %}
+        
+                {% if page_obj.has_next %}
+                <a class = "btn btn-outline-info mb-4" href = "?page={{page_obj.next_page_number}}">Next</a>
+                <a class = "btn btn-outline-info mb-4" href = "?page={{page_obj.paginator.num_pages}}">Last</a>
+                {% endif %}
+            {% endif %}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+{% endblock content %}
