@@ -9,7 +9,7 @@
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Digital World Store</h1>
             <p class="lead text-muted">We Thrive On Your Success!</p>
-            
+
             <p>
                 <a href="{%url 'contactsales'%}" class="btn btn-primary my-2">Call Our Agents For Consultation</a>
                 <a href="{% url 'blog-home' %}" class="btn btn-info my-2">Read Reviews</a>
@@ -27,11 +27,11 @@
             {% for item in inventory %}
             <div class="col">
                 <div class="card shadow-sm">
-                    <img class="card-img-top" src="{{item.image.url}}" <svg class="bd-placeholder-img card-img-top"
+                    <img class="card-img-top" src="{{item.image.url}}" class="bd-placeholder-img card-img-top"
                         width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
                         aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                     <title>Placeholder</title>
-                    </svg>
+
                     <div class="card-body">
                         <p class="card-text">{{item.description}}</p>
                         <p class="card-text">{{item.product_name}}</p>
