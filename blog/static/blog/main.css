@@ -1,8 +1,15 @@
-body {
-    background: #fafafa;
-    color: #333333;
-    margin-top: 5rem;
+
+.pageheader {
+    color: #fcf7f7;
 }
+
+body {
+    
+    color: #333333;
+
+}
+
+
 
 h1,
 h2,
@@ -311,3 +318,30 @@ a.article-title:hover {
     margin-bottom: 16px;
     position:relative;
 }
+
+.jumbotron {
+    margin: 0;
+    padding: 30px;
+    background-image: linear-gradient(to right, #202020, #6d6d6e, #4c4a4d);
+    color: white; }
+
+
+      
+.carousel-caption {
+background-color: rgba(0, 0, 0, 0.5); 
+
+}
+
+.carousel {
+border: solid #5637DD; }
+
+#carouselButton {
+position: absolute;
+right: 0;
+bottom: 0;
+z-index: 100; }
+
+
+
+
+

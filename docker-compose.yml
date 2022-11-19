@@ -6,7 +6,7 @@ services:
             - .:/digitalworld
         ports:
             - 8000:8000
-        image: digitalworldstore
+        image: nkhan233/digitalstore:v2
         container_name: django_container
         command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
         depends_on:
